@@ -1,0 +1,11 @@
+node_modules/
+.next/
+.env*
+!.env.example
+*.tsbuildinfo
+.DS_Store
+.vercel/
+output/
+PROFILE_REVIEW.md
+PLAN.md
+VERIFICATION.md
