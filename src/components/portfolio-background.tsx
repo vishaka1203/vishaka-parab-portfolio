@@ -21,12 +21,10 @@ function subscribePalette(onChange: () => void) {
   };
 }
 
-function getAccent() {
-  return (
-    getComputedStyle(document.documentElement)
-      .getPropertyValue("--accent")
-      .trim() || "#345c40"
-  );
+function getAppearance() {
+  const style = getComputedStyle(document.documentElement);
+  const accent = style.getPropertyValue("--accent").trim() || "#345c40";
+  return `${accent}|${style.colorScheme}`;
 }
 
 function subscribeReducedMotion(onChange: () => void) {
@@ -41,11 +39,12 @@ function subscribeVisibility(onChange: () => void) {
 }
 
 export function PortfolioBackground() {
-  const accent = useSyncExternalStore(
+  const appearance = useSyncExternalStore(
     subscribePalette,
-    getAccent,
-    () => "#345c40",
+    getAppearance,
+    () => "#345c40|light",
   );
+  const [accent, mode] = appearance.split("|");
   const reducedMotion = useSyncExternalStore(
     subscribeReducedMotion,
     () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
@@ -58,17 +57,21 @@ export function PortfolioBackground() {
   );
 
   return (
-    <div className="portfolio-background" aria-hidden="true">
+    <div
+      className="portfolio-background"
+      aria-hidden="true"
+      data-paused={reducedMotion || hidden}
+    >
       <Iridescence
         key={reducedMotion ? "still" : "animated"}
         className="portfolio-iridescence"
         color={accent}
-        speed={0.18}
+        speed={0.6}
         amplitude={0.05}
         saturation={0.65}
-        brightness={1.4}
+        brightness={mode === "dark" ? 0.7 : 2.2}
         contrast={0.9}
-        detail={6}
+        detail={8}
         resolution={0.5}
         mouseReact={!reducedMotion}
         clickSwirl={false}

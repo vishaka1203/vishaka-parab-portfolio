@@ -2336,42 +2336,75 @@ textarea::placeholder {
   margin-top: 24px;
 }
 
-/* React Bits Iridescence uses the existing theme accent; no rainbow hues. */
+/* The decorative layer sits above the body paint and below all page content. */
 body {
   isolation: isolate;
+}
+body > main,
+body > .site-footer {
+  position: relative;
+  z-index: 1;
 }
 .portfolio-background {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   overflow: hidden;
   pointer-events: none;
-  background: radial-gradient(
-    ellipse at 80% 15%,
-    color-mix(in srgb, var(--accent) 9%, var(--paper)),
-    var(--paper) 75%
-  );
+  background: var(--paper);
+}
+/* This moving layer also works when WebGL2 is unavailable. */
+.portfolio-background::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(
+      ellipse at 20% 30%,
+      color-mix(in srgb, var(--accent) 16%, transparent),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 80% 70%,
+      color-mix(in srgb, var(--accent) 12%, transparent),
+      transparent 50%
+    );
+  animation: portfolio-iridescent-drift 12s ease-in-out infinite alternate;
+}
+.portfolio-background[data-paused="true"]::before {
+  animation-play-state: paused;
 }
 .portfolio-iridescence {
   width: 100%;
   height: 100%;
-  opacity: 0.12;
+  opacity: 0.28;
 }
 :root[data-theme="dark"] .portfolio-iridescence {
-  opacity: 0.16;
+  opacity: 0.3;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .portfolio-iridescence {
-    opacity: 0.16;
+    opacity: 0.3;
   }
 }
 @media (max-width: 600px) {
-  .portfolio-iridescence {
-    opacity: 0.09;
+  .portfolio-background .portfolio-iridescence {
+    opacity: 0.24;
+  }
+}
+@keyframes portfolio-iridescent-drift {
+  from {
+    transform: translate3d(-6%, -4%, 0) rotate(-8deg) scale(1);
+  }
+  to {
+    transform: translate3d(6%, 5%, 0) rotate(8deg) scale(1.16);
   }
 }
 @media (prefers-reduced-motion: reduce) {
   .portfolio-iridescence {
     display: none;
+  }
+  .portfolio-background::before {
+    animation: none;
   }
 }
