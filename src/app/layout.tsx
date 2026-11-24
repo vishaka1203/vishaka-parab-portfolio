@@ -1,3 +1,4 @@
+import { PortfolioBackground } from "@/components/portfolio-background";
 import { resolveSiteUrl } from "@/lib/site-url";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -23,6 +24,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
+        <PortfolioBackground />
         <a href="#main" className="skip-link">
           Skip to content
         </a>

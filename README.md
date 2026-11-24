@@ -62,3 +62,9 @@ The UI uses system fonts to avoid remote font downloads. Core content is server 
 The runtime dependency audit (`npm audit --omit=dev`) reported zero vulnerabilities during verification. The full audit reported seven moderate findings through the development-only TypeScript ESLint / minimatch dependency chain. Compatible automatic remediation did not resolve that chain; no forced major override was applied. ESLint 9 is selected because the installed React/import/accessibility plugins declare support through 9. Recheck upstream toolchain compatibility before updating.
 
 To regenerate the public resume after editing content, export public content data with `node --import tsx -e "const p=require('./src/content/profile.ts');require('fs').writeFileSync('/tmp/portfolio-public-data.json',JSON.stringify(p));"`, then run `python scripts/generate-public-resume.py /tmp/portfolio-public-data.json` with reportlab 4 installed. Python is only needed for regeneration, not for running or deploying the site.
+
+## Theme background
+
+The site-wide background uses the React Bits Iridescence component, tinted from the existing `--accent` CSS token. `src/components/portfolio-background.tsx` controls the slow animation, subtle mouse response, capped render resolution, and page-visibility pause. Its opacity is defined in `src/app/globals.css`. Both the theme toggle and system theme changes update the effect. Reduced-motion visitors see a static theme gradient; the same gradient remains available if WebGL2 is unsupported. The background is decorative and cannot intercept navigation, form input, or scrolling.
+
+The vendored component lives under `src/components/backgrounds/` and retains its upstream license in `public/licenses/react-bits.txt`. Source: https://reactbits.dev/backgrounds/iridescence.
