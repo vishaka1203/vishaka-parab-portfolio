@@ -11,6 +11,10 @@ export const profile = {
   github: "https://github.com/vishaka1203",
   linkedin: "https://www.linkedin.com/in/vishakaparab/",
   email: contactEmail,
+  phones: [
+    { label: "+91 77218 21770", href: "tel:+917721821770" },
+    { label: "+91 76202 37343", href: "tel:+917620237343" },
+  ],
   resumeUrl: "/resume/vishaka-parab-public-resume.pdf" as string | null,
   naukri: null as string | null,
   source:

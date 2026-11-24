@@ -2,7 +2,15 @@ import { CompanyProjects } from "@/components/company-projects";
 import { resolveSiteUrl } from "@/lib/site-url";
 import { Reveal } from "@/components/reveal";
 import { Github, Linkedin } from "@/components/brand-icons";
-import { Download, Code2, Layers, Sparkles, MapPin, Mail } from "lucide-react";
+import {
+  Download,
+  Code2,
+  Layers,
+  Sparkles,
+  MapPin,
+  Mail,
+  Phone,
+} from "lucide-react";
 import { CurrentTag, TechnologyTags } from "@/components/current-tag";
 import {
   profile,
@@ -350,6 +358,14 @@ export default async function Home() {
             <Mail size={18} />
             {profile.email}
           </a>
+          <div className="contact-phones" aria-label="Phone numbers">
+            {profile.phones.map((phone) => (
+              <a className="text-link" href={phone.href} key={phone.href}>
+                <Phone size={17} aria-hidden="true" />
+                {phone.label}
+              </a>
+            ))}
+          </div>
           <div className="social-links">
             <a
               href={profile.linkedin}
