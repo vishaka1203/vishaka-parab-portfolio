@@ -12,7 +12,19 @@ export function ProjectArt({ kind }: { kind: string }) {
       aria-label="Conceptual project illustration, not a screenshot"
       role="img"
     >
-      {kind === "wushu" ? (
+      {kind === "curating" ? (
+        <div className="frames-composition">
+          <span className="frames-label">CURATING FRAMES / PHOTOGRAPHY</span>
+          <div className="frames-pair">
+            <div />
+            <div />
+          </div>
+          <h4>
+            Moments, <em>composed.</em>
+          </h4>
+          <span className="frames-label">AN EDITORIAL PERSPECTIVE</span>
+        </div>
+      ) : kind === "wushu" ? (
         <>
           <div className="art-grain" />
           <span className="art-corner">WUSHU / GOA</span>

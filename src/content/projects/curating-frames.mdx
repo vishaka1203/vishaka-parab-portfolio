@@ -1,0 +1,21 @@
+## Editorial photography, built for the web
+
+Curating Frames is a photography portfolio built with Next.js App Router, React, strict TypeScript, and Tailwind CSS. Its interface combines an editorial presentation with structured, maintainable project content.
+
+## Application scope
+
+The site includes a homepage, filterable portfolio, individual gallery pages, About, Contact, and Privacy pages. Collection content is stored in JSON with publication dates, categories, covers, and image metadata. New collections can be added through content changes without modifying the gallery components.
+
+## Technical implementation
+
+- shadcn-style interface primitives and Radix Dialog support accessible interactive elements.
+- GSAP and ScrollTrigger provide motion, alongside browser-native scrolling.
+- Image metadata and optimized local assets support responsive gallery presentation.
+- A Zod-validated enquiry endpoint includes origin checks, payload limits, and a honeypot. Email delivery depends on configuring the provider; the site reports an unconfigured service honestly.
+- Page metadata, a sitemap, robots rules, and a custom 404 support discoverability and navigation.
+
+## Engineering decisions
+
+A local content model keeps collections independent from presentation components. The enquiry handler separates input validation from provider delivery, and does not claim a message was sent without a confirmed provider response. A future CMS integration is documented, while JSON content remains the working implementation.
+
+[Explore the source](https://github.com/vishaka1203/curating-frames) or [visit Curating Frames](https://curating-frames.vercel.app).

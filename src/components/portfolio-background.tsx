@@ -23,7 +23,10 @@ function subscribePalette(onChange: () => void) {
 
 function getAppearance() {
   const style = getComputedStyle(document.documentElement);
-  const accent = style.getPropertyValue("--accent").trim() || "#345c40";
+  const accent =
+    style.getPropertyValue("--iridescence-color").trim() ||
+    style.getPropertyValue("--accent").trim() ||
+    "#345c40";
   return `${accent}|${style.colorScheme}`;
 }
 
@@ -66,16 +69,16 @@ export function PortfolioBackground() {
         key={reducedMotion ? "still" : "animated"}
         className="portfolio-iridescence"
         color={accent}
-        speed={0.6}
+        speed={0.4}
         amplitude={0.05}
         saturation={0.65}
-        brightness={mode === "dark" ? 0.7 : 2.2}
+        brightness={mode === "dark" ? 1.6 : 2.1}
         contrast={0.9}
         detail={8}
         resolution={0.5}
         mouseReact={!reducedMotion}
         clickSwirl={false}
-        stir={0.12}
+        stir={0.18}
         sheen={0.12}
         paused={reducedMotion || hidden}
       />

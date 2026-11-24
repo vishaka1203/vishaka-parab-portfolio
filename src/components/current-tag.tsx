@@ -10,3 +10,17 @@ export function CurrentTag() {
     </LayoutProvider>
   );
 }
+
+export function TechnologyTags({ items }: { items: string[] }) {
+  return (
+    <LayoutProvider>
+      <div className="technology-tags">
+        {items.map((item) => (
+          <Tag key={item} size="m" className="technology-tag">
+            {item}
+          </Tag>
+        ))}
+      </div>
+    </LayoutProvider>
+  );
+}

@@ -1,15 +1,11 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import {
-  Search,
-  ArrowUpRight,
-  ArrowDown,
-  SlidersHorizontal,
-} from "lucide-react";
+import { Search, SlidersHorizontal } from "lucide-react";
 import { projects } from "@/content/profile";
 import { discover } from "@/lib/portfolio";
 import { ProjectPreview } from "./project-preview";
+import { Input } from "./ui/input";
 export function Projects() {
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("All");
@@ -23,7 +19,7 @@ export function Projects() {
     <section id="work" className="section work-section">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">01 / SELECTED WORK</p>
+          <p className="eyebrow">SELECTED WORK</p>
           <h2>
             Ideas, made tangible<span>.</span>
           </h2>
@@ -37,7 +33,7 @@ export function Projects() {
       <div className="filter-bar">
         <label className="search-field">
           <Search size={17} />
-          <input
+          <Input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Try “projects using TypeScript”"
@@ -47,7 +43,6 @@ export function Projects() {
         <button className="sort-control" onClick={() => setRecent(!recent)}>
           <SlidersHorizontal size={15} />
           {recent ? "Recently updated" : "Newest first"}
-          <ArrowDown size={13} />
         </button>
       </div>
       <div className="filters" aria-label="Project category">
@@ -70,25 +65,27 @@ export function Projects() {
           <article className="project-card" key={p.slug}>
             <Link className="project-image-link" href={`/projects/${p.slug}`}>
               <ProjectPreview project={p} />
-              <span className="project-hover">
-                Explore project <ArrowUpRight size={18} />
-              </span>
+              <span className="project-hover">Explore project</span>
             </Link>
-            <div className="project-meta">
-              <span>
-                {p.category} {p.featured ? " / FEATURED" : ""}
-              </span>
-              <span>{p.createdAt.slice(0, 4)}</span>
-            </div>
-            <Link className="project-title" href={`/projects/${p.slug}`}>
-              <h3>{p.title}</h3>
-              <ArrowUpRight size={22} />
-            </Link>
-            <p>{p.summary}</p>
-            <div className="tags">
-              {p.technologies.map((t) => (
-                <span key={t}>{t}</span>
-              ))}
+            <div className="project-content">
+              <div className="project-meta">
+                <span>
+                  {p.category} {p.featured ? " / FEATURED" : ""}
+                </span>
+                <span>{p.createdAt.slice(0, 4)}</span>
+              </div>
+              <Link className="project-title" href={`/projects/${p.slug}`}>
+                <h3>{p.title}</h3>
+                <span aria-hidden="true" className="project-open">
+                  +
+                </span>
+              </Link>
+              <p>{p.summary}</p>
+              <div className="tags">
+                {p.technologies.map((t) => (
+                  <span key={t}>{t}</span>
+                ))}
+              </div>
             </div>
             <span className="sr-only">
               Project {i + 1} of {found.length}

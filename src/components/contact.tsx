@@ -1,8 +1,9 @@
 "use client";
 import { contactEmail, emailDraft } from "@/content/contact";
 import { useState } from "react";
-import { ArrowUpRight, LoaderCircle } from "lucide-react";
+import { Send, LoaderCircle } from "lucide-react";
 import { Button } from "./ui/button";
+import { Input, Textarea } from "./ui/input";
 export function ContactForm() {
   const [status, setStatus] = useState("");
   const [busy, setBusy] = useState(false);
@@ -53,7 +54,7 @@ export function ContactForm() {
       <div className="contact-inputs">
         <label>
           Your name
-          <input
+          <Input
             name="name"
             required
             minLength={2}
@@ -64,7 +65,7 @@ export function ContactForm() {
         </label>
         <label>
           Email address
-          <input
+          <Input
             name="email"
             type="email"
             required
@@ -76,7 +77,7 @@ export function ContactForm() {
       </div>
       <label>
         What do you have in mind?
-        <textarea
+        <Textarea
           name="message"
           required
           minLength={20}
@@ -87,7 +88,7 @@ export function ContactForm() {
       </label>
       <label className="honeypot" aria-hidden="true">
         Website
-        <input name="website" tabIndex={-1} autoComplete="off" />
+        <Input name="website" tabIndex={-1} autoComplete="off" />
       </label>
       <div className="form-footer">
         <p>
@@ -100,7 +101,7 @@ export function ContactForm() {
             <LoaderCircle className="spin" size={16} />
           ) : (
             <>
-              Send message <ArrowUpRight size={16} />
+              Send message <Send size={16} />
             </>
           )}
         </Button>
@@ -112,7 +113,7 @@ export function ContactForm() {
       )}
       {draft && (
         <a className="text-link contact-email" href={draft}>
-          Open email draft to {contactEmail} <ArrowUpRight size={16} />
+          Open email draft to {contactEmail} <Send size={16} />
         </a>
       )}
     </form>

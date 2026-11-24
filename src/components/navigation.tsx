@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Moon, Sun, ArrowUpRight, Menu, X } from "lucide-react";
+import { Moon, Sun, Menu, X } from "lucide-react";
 export function Navigation() {
   const [open, setOpen] = useState(false);
   useEffect(() => {
@@ -33,7 +33,11 @@ export function Navigation() {
       }}
     >
       <div className="nav-inner">
-        <Link href="/" className="wordmark" aria-label="Vishaka Parab home">
+        <Link
+          href="/#home"
+          className="wordmark"
+          aria-label="Vishaka Parab home"
+        >
           vp<span>.</span>
         </Link>
         <nav
@@ -41,7 +45,9 @@ export function Navigation() {
           aria-label="Main navigation"
         >
           {[
-            ["Work", "/#work"],
+            ["Home", "/#home"],
+            ["Projects", "/#work"],
+            ["Company work", "/#company-work"],
             ["About", "/#about"],
             ["Experience", "/#experience"],
           ].map(([label, href]) => (
@@ -54,7 +60,7 @@ export function Navigation() {
             className="nav-contact"
             onClick={() => setOpen(false)}
           >
-            Let’s talk <ArrowUpRight size={14} />
+            Let’s talk
           </Link>
         </nav>
         <button

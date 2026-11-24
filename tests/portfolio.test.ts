@@ -9,7 +9,13 @@ import {
 import { projects } from "../src/content/profile";
 test("newest first and pinned projects remain featured", () => {
   const list = sortProjects(projects);
-  assert.equal(list[0].slug, "wushu-goa");
+  assert.equal(
+    list[0].createdAt,
+    projects
+      .map((p) => p.createdAt)
+      .sort()
+      .at(-1),
+  );
   assert.ok(list.some((p) => p.featured));
 });
 test("natural language technology discovery", () => {
@@ -124,7 +130,13 @@ test("assistant recommends only matching Next.js projects", () => {
 });
 test("recently updated view keeps matching projects", () => {
   assert.equal(discover(projects, "recently updated").length, projects.length);
-  assert.equal(discover(projects, "recently updated")[0].slug, "wushu-goa");
+  assert.equal(
+    discover(projects, "recently updated")[0].updatedAt,
+    projects
+      .map((p) => p.updatedAt)
+      .sort()
+      .at(-1),
+  );
 });
 test("unconfigured contact offers a draft to the approved address", async () => {
   const old = process.env.RESEND_API_KEY;
@@ -166,4 +178,9 @@ test("deployment metadata uses the Vercel production domain", () => {
     }),
     "https://custom.example",
   );
+});
+
+test("Curating Frames is discoverable by name", () => {
+  const matches = discover(projects, "Curating Frames");
+  assert.equal(matches[0]?.slug, "curating-frames");
 });

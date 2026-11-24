@@ -20,7 +20,7 @@ Edit `src/content/profile.ts` for professional details, skills, education, proje
 
 The contact section links directly to the owner-approved address `devvishakaparab@gmail.com` using `mailto:`. Visitors can send email through their own mail app. The server form still requires email-provider configuration.
 
-The public resume in `public/resume/` is generated from verified portfolio data with phone and email omitted. The original resume is not included. Replace this PDF with an approved version as desired and edit `profile.resumeUrl` if its path changes. To display an approved Naukri profile, set `profile.naukri` to a public URL and add a social link; the supplied account-page URL is not a shareable verified profile. Oracle certifications are included from the profile listings; credential documents have not been independently inspected.
+The public resume in `public/resume/` is generated from verified portfolio data with the approved contact email and portfolio link; the phone number is omitted. The original resume is not included. Replace this PDF with an approved version as desired and edit `profile.resumeUrl` if its path changes. To display an approved Naukri profile, set `profile.naukri` to a public URL and add a social link; the supplied account-page URL is not a shareable verified profile. Oracle certifications are included from the profile listings; credential documents have not been independently inspected.
 
 ## Add a project without UI changes
 
@@ -68,3 +68,11 @@ To regenerate the public resume after editing content, export public content dat
 The site-wide background uses the React Bits Iridescence component, tinted from the existing `--accent` CSS token. `src/components/portfolio-background.tsx` controls the slow animation, subtle mouse response, capped render resolution, and page-visibility pause. Its opacity is defined in `src/app/globals.css`. Both the theme toggle and system theme changes update the effect. Reduced-motion visitors see a static theme gradient. Other visitors retain a moving CSS gradient if WebGL2 is unsupported. The effect uses an explicit background layer below the page content, with theme-specific brightness to keep the green motion visible. The background is decorative and cannot intercept navigation, form input, or scrolling.
 
 The vendored component lives under `src/components/backgrounds/` and retains its upstream license in `public/licenses/react-bits.txt`. Source: https://reactbits.dev/backgrounds/iridescence.
+
+## Local luxury design preview
+
+The approved design was prepared on the `design/local-luxury` branch. The owner approved deployment on 24 November 2026. The design contract is deep jade and porcelain with restrained champagne details; Manrope for interfaces, Cormorant Garamond for editorial emphasis; clear project evidence as the primary task; no new career claims or invented metrics.
+
+`src/app/design.css` owns the preview palette and presentation overrides. Shared native inputs and buttons follow the shadcn/ui source-owned component pattern; Once UI supplies toolkit tags; the licensed React Bits Iridescence renderer supplies decorative motion. The background uses the palette’s `--iridescence-color` token. Light/dark themes, 16px inputs, touch targets, reduced-motion handling and form feedback are retained. Font files and their SIL licenses are hosted locally under `public/`, so rendering does not depend on a third-party font service. Reading surfaces protect contrast over the animated background.
+
+References: https://ui.shadcn.com/docs/theming · https://docs.once-ui.com/quick-start · https://reactbits.dev/backgrounds/iridescence.

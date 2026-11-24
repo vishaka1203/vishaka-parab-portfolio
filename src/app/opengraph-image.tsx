@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-export const alt = "Vishaka Parab — Frontend Engineer";
+export const alt = "Vishaka Parab — Software Developer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export default function Image() {
@@ -17,7 +17,7 @@ export default function Image() {
       }}
     >
       <div style={{ fontSize: 25, display: "flex" }}>
-        VISHAKA PARAB / FRONTEND ENGINEER
+        VISHAKA PARAB / SOFTWARE DEVELOPER
       </div>
       <div
         style={{
@@ -27,9 +27,9 @@ export default function Image() {
           display: "flex",
         }}
       >
-        Thoughtful interfaces.
+        Software Developer.
         <br />
-        Built with intent.
+        Engineering with intent.
       </div>
       <div style={{ fontSize: 24, display: "flex" }}>
         React · Next.js · TypeScript

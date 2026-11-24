@@ -2,12 +2,12 @@ import githubMetadata from "./github.generated.json";
 import { contactEmail } from "./contact";
 export const profile = {
   name: "Vishaka Parab",
-  title: "Frontend Engineer",
+  title: "Software Developer",
   location: "Mumbai, India",
   summary:
-    "Frontend engineer with 3+ years of experience building responsive web applications with React, Next.js and TypeScript. I turn complex workflows into clear, reusable interfaces.",
+    "Software Developer based in Mumbai with 3+ years of professional experience in enterprise web application development. Technical strengths include React, Next.js, TypeScript, REST API integration, reusable component architecture, and data visualisation.",
   about:
-    "My work spans cloud security, governance, compliance, HR and logistics. I care about modular frontend architecture, useful data visualisation, and the small details that make an interface feel intuitive. From integrating APIs to troubleshooting production issues, I enjoy connecting thoughtful design with dependable engineering.",
+    "Professional experience includes translating requirements into maintainable code, collaborating with engineering teams, troubleshooting production issues, and supporting testing, Docker deployments, and CI/CD workflows. AI-assisted development with Cursor, Codex, and Claude supports prototyping, implementation, debugging, and test preparation.",
   github: "https://github.com/vishaka1203",
   linkedin: "https://www.linkedin.com/in/vishakaparab/",
   email: contactEmail,
@@ -120,11 +120,33 @@ export type Project = {
   featured: boolean;
   githubUrl: string;
   liveUrl?: string;
-  art: "wushu" | "hospital" | "url" | "portfolio";
+  art: "wushu" | "hospital" | "url" | "portfolio" | "curating";
   image?: string;
   source: string;
 };
 const curatedProjects: Project[] = [
+  {
+    slug: "curating-frames",
+    title: "Curating Frames",
+    summary:
+      "An editorial photography website with filterable collections, individual gallery pages, responsive image delivery, and a validated enquiry flow.",
+    category: "Photography",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "GSAP",
+    ],
+    createdAt: "2026-11-16",
+    updatedAt: "2026-11-16",
+    featured: true,
+    githubUrl: "https://github.com/vishaka1203/curating-frames",
+    liveUrl: "https://curating-frames.vercel.app",
+    art: "curating",
+    source:
+      "Owner project README and package manifest; public GitHub metadata reviewed 24 November 2026",
+  },
   {
     slug: "wushu-goa",
     title: "Wushu Goa",

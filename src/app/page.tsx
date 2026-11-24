@@ -1,16 +1,9 @@
+import { CompanyProjects } from "@/components/company-projects";
 import { resolveSiteUrl } from "@/lib/site-url";
 import { Reveal } from "@/components/reveal";
 import { Github, Linkedin } from "@/components/brand-icons";
-import {
-  ArrowUpRight,
-  ArrowDown,
-  Code2,
-  Layers,
-  Globe2,
-  MapPin,
-  Mail,
-} from "lucide-react";
-import { CurrentTag } from "@/components/current-tag";
+import { Download, Code2, Layers, Sparkles, MapPin, Mail } from "lucide-react";
+import { CurrentTag, TechnologyTags } from "@/components/current-tag";
 import {
   profile,
   experience,
@@ -42,10 +35,10 @@ export default async function Home() {
           }).replace(/</g, "\\u003c"),
         }}
       />
-      <section className="hero section">
+      <section id="home" className="hero section">
         <div className="hero-top">
           <p className="eyebrow">
-            <span className="status-dot" /> FRONTEND ENGINEER / VISHAKA PARAB
+            <span className="status-dot" /> VISHAKA PARAB / SOFTWARE DEVELOPER
           </p>
           <span className="location">
             <MapPin size={13} /> {profile.location}
@@ -54,30 +47,26 @@ export default async function Home() {
         <div className="hero-layout">
           <div className="hero-copy">
             <h1>
-              Thoughtful interfaces.
+              Software Developer.
               <br />
-              <span>Built with intent.</span>
+              <span>Engineering with intent.</span>
             </h1>
             <p>
-              I’m Vishaka, a frontend engineer connecting
-              <br className="desktop-break" /> thoughtful design with dependable
-              code.
+              Software Developer with 3+ years of experience building enterprise
+              web applications. Skilled in React, Next.js, TypeScript, and API
+              integration, with an AI-assisted development workflow.
             </p>
             <div className="hero-actions">
               <Button asChild>
-                <a href="#work">
-                  Explore my work <ArrowDown size={16} />
-                </a>
+                <a href="#work">Explore my work</a>
               </Button>
               <a href="#contact" className="text-link">
-                Let’s build something <ArrowUpRight size={16} />
+                Let’s build something
               </a>
             </div>
             <div className="hero-stack">
-              <span>MY EVERYDAY TOOLKIT</span>
-              <span>React</span>
-              <span>Next.js</span>
-              <span>TypeScript</span>
+              <span>CORE TECHNOLOGIES</span>
+              <TechnologyTags items={["React", "Next.js", "TypeScript"]} />
             </div>
             {profile.resumeUrl && (
               <a
@@ -85,7 +74,7 @@ export default async function Home() {
                 href={profile.resumeUrl}
                 download
               >
-                Download resume <ArrowDown size={13} />
+                <Download size={16} /> Download resume
               </a>
             )}
           </div>
@@ -148,21 +137,19 @@ export default async function Home() {
         </div>
         <div className="hero-bottom">
           <span>COMPLEXITY, MADE CLEAR.</span>
-          <a href="#about">
-            A little more about me <ArrowDown size={13} />
-          </a>
+          <a href="#about">A little more about me</a>
           <span>SCROLL TO EXPLORE</span>
         </div>
       </section>
       <div className="expertise-strip">
         <span>
-          <Code2 size={17} /> Frontend architecture
+          <Code2 size={17} /> Application architecture
         </span>
         <span>
           <Layers size={17} /> Reusable design systems
         </span>
         <span>
-          <Globe2 size={17} /> API-connected experiences
+          <Sparkles size={17} /> AI-assisted development
         </span>
         <span>React · Next.js · TypeScript</span>
       </div>
@@ -171,7 +158,7 @@ export default async function Home() {
       </Reveal>
       <section className="section about-section" id="about">
         <div className="about-label">
-          <p className="eyebrow">02 / THE PERSON BEHIND THE WORK</p>
+          <p className="eyebrow">ABOUT VISHAKA</p>
           <div className="monogram-art">
             v<span>p</span>
             <small>
@@ -183,9 +170,9 @@ export default async function Home() {
         </div>
         <div className="about-copy">
           <h2>
-            Good interfaces start
+            Vishaka Parab.
             <br />
-            with <em>good questions.</em>
+            <em>Software Developer.</em>
           </h2>
           <p className="lead">{profile.summary}</p>
           <p>{profile.about}</p>
@@ -195,8 +182,8 @@ export default async function Home() {
               <span>Mumbai, India</span>
             </div>
             <div>
-              <strong>Currently building</strong>
-              <span>Cloud security interfaces</span>
+              <strong>Engineering approach</strong>
+              <span>AI-assisted, technically grounded</span>
             </div>
           </div>
           <a
@@ -205,14 +192,15 @@ export default async function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            More about my journey <ArrowUpRight size={16} />
+            More about my journey
           </a>
         </div>
       </section>
+      <CompanyProjects />
       <section className="section experience-section" id="experience">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">03 / ALONG THE WAY</p>
+            <p className="eyebrow">EXPERIENCE</p>
             <h2>
               Experience that adds up<span>.</span>
             </h2>
@@ -256,7 +244,7 @@ export default async function Home() {
       <section className="section skills-section" id="skills">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">04 / THE TOOLKIT</p>
+            <p className="eyebrow">THE TOOLKIT</p>
             <h2>
               The tools behind the thinking<span>.</span>
             </h2>
@@ -268,9 +256,8 @@ export default async function Home() {
           </p>
         </div>
         <div className="skill-list">
-          {Object.entries(skills).map(([group, items], i) => (
+          {Object.entries(skills).map(([group, items]) => (
             <div className="skill-row" key={group}>
-              <span className="skill-number">0{i + 1}</span>
               <h3>{group}</h3>
               <div>
                 {items.map((t) => (
@@ -314,7 +301,6 @@ export default async function Home() {
             className="text-link"
           >
             <Github size={16} /> Explore my repositories{" "}
-            <ArrowUpRight size={16} />
           </a>
         </div>
         <div className="github-repos">
@@ -334,7 +320,6 @@ export default async function Home() {
                     {r.forks_count} forks
                   </small>
                 </span>
-                <ArrowUpRight size={17} />
               </a>
             ))
           ) : (
@@ -348,14 +333,14 @@ export default async function Home() {
       </section>
       <section className="section contact-section" id="contact">
         <div className="contact-copy">
-          <p className="eyebrow">05 / WHAT’S NEXT?</p>
+          <p className="eyebrow">LET’S CONNECT</p>
           <h2>
             Great things start
             <br />
             with a <em>conversation.</em>
           </h2>
           <p>
-            Have a role or project where thoughtful frontend engineering can
+            Have a role or project where thoughtful software development can
             make a difference? Let’s connect.
           </p>
           <a
@@ -364,7 +349,6 @@ export default async function Home() {
           >
             <Mail size={18} />
             {profile.email}
-            <ArrowUpRight size={16} />
           </a>
           <div className="social-links">
             <a
@@ -372,16 +356,16 @@ export default async function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Linkedin size={17} /> LinkedIn <ArrowUpRight size={14} />
+              <Linkedin size={17} /> LinkedIn
             </a>
             <a href={profile.github} target="_blank" rel="noopener noreferrer">
-              <Github size={17} /> GitHub <ArrowUpRight size={14} />
+              <Github size={17} /> GitHub
             </a>
           </div>
           {profile.resumeUrl ? (
             <Button asChild variant="outline" className="contact-resume">
               <a href={profile.resumeUrl} download>
-                Download resume <ArrowDown size={16} />
+                <Download size={16} /> Download resume
               </a>
             </Button>
           ) : (
