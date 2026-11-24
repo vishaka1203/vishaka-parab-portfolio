@@ -359,12 +359,14 @@ export default async function Home() {
             {profile.email}
           </a>
           <div className="contact-phones" aria-label="Phone numbers">
-            {profile.phones.map((phone) => (
-              <a className="text-link" href={phone.href} key={phone.href}>
-                <Phone size={17} aria-hidden="true" />
-                {phone.label}
-              </a>
-            ))}
+            <Phone size={17} aria-hidden="true" />
+            <div className="contact-phone-numbers">
+              {profile.phones.map((phone) => (
+                <a className="text-link" href={phone.href} key={phone.href}>
+                  {phone.label}
+                </a>
+              ))}
+            </div>
           </div>
           <div className="social-links">
             <a

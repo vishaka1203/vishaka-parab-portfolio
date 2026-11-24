@@ -1680,9 +1680,15 @@ small {
 
 .contact-phones {
   display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 16px;
+  color: var(--accent);
+}
+.contact-phone-numbers {
+  display: flex;
   flex-wrap: wrap;
   gap: 4px 24px;
-  margin-top: 16px;
 }
 .contact-phones a {
   display: inline-flex;
@@ -1692,6 +1698,7 @@ small {
   color: var(--accent);
   white-space: nowrap;
 }
-.contact-phones svg {
+.contact-phones > svg {
   flex-shrink: 0;
+  margin-top: 13.5px;
 }
